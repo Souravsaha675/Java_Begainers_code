@@ -15,16 +15,16 @@ public class methods {
         highScore = calculateScore(gameover, score, levelComplete, bonus);
         System.out.println("Your final score is" + highScore);
 
-        int highScorePosition = calcilateHighScorePosition(1000);
+        int highScorePosition = calculateHighScorePosition(1000);
         displayHighScorePosition("Sourav", highScorePosition);
 
-        highScorePosition = calcilateHighScorePosition(900);
+        highScorePosition = calculateHighScorePosition(900);
         displayHighScorePosition("Bob", highScorePosition);
 
-        highScorePosition = calcilateHighScorePosition(400);
+        highScorePosition = calculateHighScorePosition(400);
         displayHighScorePosition("Tim", highScorePosition);
 
-        highScorePosition = calcilateHighScorePosition(50);
+        highScorePosition = calculateHighScorePosition(50);
         displayHighScorePosition("Ram", highScorePosition);
     }
 
@@ -44,15 +44,16 @@ public class methods {
 
     }
 
-    public static int calcilateHighScorePosition(int score) {
+    public static int calculateHighScorePosition(int score) {
         if (score >= 1000) {
             return 1;
-        } else if (score >= 500 && score < 1000) {
+        } else if (score >= 500) {
             return 2;
-        } else if (score >= 100 && score < 500) {
+        } else if (score >= 100) {
             return 3;
-        } else {
-            return 4;
         }
+        return 4;
+
     }
+
 }
