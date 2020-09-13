@@ -27,7 +27,7 @@ public class Account {
     }
 
     public void withdraw(double amount) {
-        if (amount >= this.balance)
+        if (amount > this.balance)
             System.out.println("Insufficient Balance");
         else {
             this.balance -= amount;
