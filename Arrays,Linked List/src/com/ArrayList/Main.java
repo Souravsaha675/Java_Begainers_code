@@ -25,14 +25,101 @@ public class Main {
         printOptions();
         while (!quit) {
             System.out.println("\nEnter your Options :");
-            int action= scanner.nextInt();
+            int action = scanner.nextInt();
             scanner.nextLine();
-            quit=true;
 
-            /*switch (action){
+            switch (action) {
                 case 0:
-            }*/
+                    System.out.println("\nShutting down...");
+                    quit = true;
+                    break;
+                case 1:
+                    printContacts();
+                    break;
+                case 2:
+                    addNewContact();
+                    break;
+                case 3:
+                    updateContact();
+                    break;
+                case 4:
+                    removeContact();
+                    break;
+                case 5:
+                    queryContact();
+                    break;
+                case 6:
+                    printOptions();
+                    break;
+
+            }
         }
+    }
+
+    private static void printContacts() {
+        mobilePhone.printContacts();
+    }
+
+    private static void addNewContact() {
+        System.out.println("Enter new contact name");
+        String name = scanner.nextLine();
+        System.out.println("Enter phone number");
+        String phone = scanner.nextLine();
+        Contacts newContact = Contacts.createContact(name, phone);
+        if (mobilePhone.addNewContact(newContact)) {
+            System.out.println("New contact added name = " + name + ". phone =" + phone);
+        } else {
+            System.out.println(name + ", cannot be add already exits");
+        }
+    }
+
+    private static void updateContact() {
+        System.out.println("Enter existing contact name;");
+        String name = scanner.nextLine();
+        Contacts existingContact = mobilePhone.queryContact(name);
+        if (existingContact == null) {
+            System.out.println("Contact not found.");
+            return;
+        }
+        System.out.println("Enter new contact name: ");
+        String newName = scanner.nextLine();
+        System.out.println("Enter new phone number");
+        String newPhone = scanner.nextLine();
+        Contacts newContact = Contacts.createContact(newName, newPhone);
+        if (mobilePhone.updateContact(existingContact, newContact)) {
+            System.out.println("Successfully updated record");
+        } else {
+            System.out.println("Error updating record");
+        }
+    }
+
+    private static void removeContact() {
+        System.out.println("Enter existing contact name;");
+        String name = scanner.nextLine();
+        Contacts existingContact = mobilePhone.queryContact(name);
+        if (existingContact == null) {
+            System.out.println("Contact not found.");
+            return;
+        }
+
+        if (mobilePhone.removeContact(existingContact)) {
+            System.out.println("Successfully deleted");
+        } else {
+            System.out.println("Error deleting contact");
+        }
+    }
+
+    private static void queryContact() {
+        System.out.println("Enter existing contact name");
+        String name = scanner.nextLine();
+        Contacts existingContact = mobilePhone.queryContact(name);
+        if (existingContact == null) {
+            System.out.println("Contact not found.");
+            return;
+        }
+
+        System.out.println("Name : " + existingContact.getName() +
+                ", phone number is : " + existingContact.getNumber());
     }
 
     private static void startPhone() {

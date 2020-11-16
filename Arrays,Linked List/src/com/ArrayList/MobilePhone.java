@@ -20,15 +20,15 @@ public class MobilePhone {
         return true;
     }
 
-    public boolean updateContact(Contacts oldContact,Contacts newContact){
-        int index=findContact(oldContact);
-        if(index <0){
-            System.out.println(oldContact.getName()+" was not found");
+    public boolean updateContact(Contacts oldContact, Contacts newContact) {
+        int index = findContact(oldContact);
+        if (index < 0) {
+            System.out.println(oldContact.getName() + " was not found");
             return false;
         }
 
-        this.myContacts.set(index,newContact);
-        System.out.println(oldContact.getName()+" was replaced with "+newContact.getName());
+        this.myContacts.set(index, newContact);
+        System.out.println(oldContact.getName() + " was replaced with " + newContact.getName());
         return true;
     }
 
@@ -46,22 +46,39 @@ public class MobilePhone {
         return -1;
     }
 
-    public boolean removeContact(Contacts contact){
+    public boolean removeContact(Contacts contact) {
         int index = findContact(contact);
-        if(index <0){
-            System.out.println(contact.getName()+" was not found");
+        if (index < 0) {
+            System.out.println(contact.getName() + " was not found");
             return false;
         }
         this.myContacts.remove(index);
-        System.out.println(contact.getName()+" was deleted");
+        System.out.println(contact.getName() + " was deleted");
         return true;
     }
 
-    public String queryContact(Contacts contact){
-        if(findContact(contact) >=0){
+    public String queryContact(Contacts contact) {
+        if (findContact(contact) >= 0) {
             return contact.getName();
         }
         return null;
+    }
+
+    public Contacts queryContact(String name){
+        int index=findContact(name);
+        if(index>=0){
+            return this.myContacts.get(index);
+        }
+        return null;
+    }
+
+    public void printContacts() {
+        System.out.println("Contact List ");
+        for (int i = 0; i < this.myContacts.size(); i++) {
+            System.out.println((i + 1) + ". " +
+                    this.myContacts.get(i).getName() + " -> " +
+                    this.myContacts.get(i).getNumber());
+        }
     }
 }
 
