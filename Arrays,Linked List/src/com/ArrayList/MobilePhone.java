@@ -25,6 +25,9 @@ public class MobilePhone {
         if (index < 0) {
             System.out.println(oldContact.getName() + " was not found");
             return false;
+        } else if(findContact(newContact.getName()) != -1){
+            System.out.println("Contact with name " + newContact.getName() + " already exists . update not possible.");
+            return false;
         }
 
         this.myContacts.set(index, newContact);
@@ -64,9 +67,9 @@ public class MobilePhone {
         return null;
     }
 
-    public Contacts queryContact(String name){
-        int index=findContact(name);
-        if(index>=0){
+    public Contacts queryContact(String name) {
+        int index = findContact(name);
+        if (index >= 0) {
             return this.myContacts.get(index);
         }
         return null;
