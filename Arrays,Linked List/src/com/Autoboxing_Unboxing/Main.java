@@ -22,4 +22,23 @@ public class Main {
     // Add data validation.
     // e.g. check if exists, or does not exist, etc.
     // Think about where you are adding the code to perform certain actions
+
+    public static void main(String[] args) {
+        Bank bank = new Bank("SBI");
+
+        bank.addBranch("Kolkata");
+        bank.addCustomer("Kolkata", "Sourav", 1000.50);
+        bank.addCustomer("Kolkata", "Jhon", 500.50);
+        bank.addCustomer("Kolkata", "Ram", 100.00);
+
+        bank.addBranch("Delhi");
+        bank.addCustomer("Delhi", "Sourav Saha", 1000.50);
+
+        bank.addCustomerTransaction("Kolkata","Sourav",500.50);
+        bank.addCustomerTransaction("Kolkata","Ram",200.00);
+        bank.addCustomerTransaction("Delhi","Sourav Saha",400.50);
+
+        bank.listCustomer("Kolkata",true);
+        bank.listCustomer("Delhi",true);
+    }
 }

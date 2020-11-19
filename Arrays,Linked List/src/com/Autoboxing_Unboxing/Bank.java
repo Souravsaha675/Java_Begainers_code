@@ -52,12 +52,12 @@ public class Bank {
             ArrayList<Customer> customerList = branch.getCustomers();
             for (int i = 0; i < customerList.size(); i++) {
                 Customer customer = customerList.get(i);
-                System.out.println((i + 1) + ". Customer -> " + customer.getName());
+                System.out.println((i + 1) + ". Customer Name -> " + customer.getName());
                 if (showTransactions) {
                     System.out.println("Transactions :");
                     ArrayList<Double> transaction = customer.getTransactions();
                     for (int j = 0; j < transaction.size(); j++) {
-                        System.out.println((j + 1) + ". Amount " + transaction.get(j));
+                        System.out.println("    "+(j + 1) + ". Amount " + transaction.get(j));
                     }
                 }
             }
